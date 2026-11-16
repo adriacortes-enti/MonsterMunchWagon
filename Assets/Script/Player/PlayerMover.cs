@@ -1,8 +1,5 @@
-using Unity.Hierarchy;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class PlayerMover : MonoBehaviour
 {
@@ -25,7 +22,7 @@ public class PlayerMover : MonoBehaviour
         transform.Rotate(0, Mouse.current.delta.ReadValue().x * rotateSpeed, 0);
 
         cameraPitch = Mathf.Clamp(cameraPitch - Mouse.current.delta.ReadValue().y * rotateSpeed, -75f, 75f);
-        cam.transform.localRotation = Quaternion.Euler(cameraPitch, cam.transform.localEulerAngles.y, cam.transform.localEulerAngles.z);
+        cam.transform.localRotation = Quaternion.Euler(cameraPitch, cam.transform.localEulerAngles.y, cam.transform.localEulerAngles.z);        
 
         //wasd
         Vector3 dir = input.Player.Move.ReadValue<Vector2>();
