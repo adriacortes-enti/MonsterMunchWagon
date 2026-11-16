@@ -4,7 +4,7 @@ public class Interactable : MonoBehaviour
 {
     public bool pickUpObject = false;
 
-    public void Interact() 
+    public void Interact(GameObject player) 
     {
         print("Interacting");
     }

@@ -24,7 +24,7 @@ public class PlayerInteractions : MonoBehaviour
 
                 if (input.Player.Interact.WasPressedThisFrame())
                 {
-                    hit.transform.gameObject.GetComponent<Interactable>().Interact();
+                    hit.transform.gameObject.GetComponent<Interactable>().Interact(gameObject);
                 }
             }
 
