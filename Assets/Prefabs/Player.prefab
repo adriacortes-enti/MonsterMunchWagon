@@ -237,7 +237,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 2
 --- !u!1 &5590702674770247770
 GameObject:
@@ -284,6 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractions
   heldObj: {fileID: 0}
+  throwStrength: 5
 --- !u!1 &7864880628530189824
 GameObject:
   m_ObjectHideFlags: 0

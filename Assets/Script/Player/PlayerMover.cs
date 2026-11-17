@@ -9,8 +9,13 @@ public class PlayerMover : MonoBehaviour
     public GameObject cam;
     float cameraPitch;
 
+    Rigidbody rb;
+    Vector3 dir;
+
     void Start()
     {
+        rb = gameObject.GetComponent<Rigidbody>();
+
         input = new InputSystem_Actions();
         input.Enable();
     }
@@ -25,16 +30,11 @@ public class PlayerMover : MonoBehaviour
         cam.transform.localRotation = Quaternion.Euler(cameraPitch, cam.transform.localEulerAngles.y, cam.transform.localEulerAngles.z);        
 
         //wasd
-        Vector3 dir = input.Player.Move.ReadValue<Vector2>();
+        dir = input.Player.Move.ReadValue<Vector2>();
         dir.z = dir.y;
         dir.y = 0;
 
-        //transform.position += transform.forward * dir.z * speed * Time.deltaTime;
-        //transform.position += transform.right * dir.x * speed * Time.deltaTime;
-
-        //wasd alternativa (optimizada, dir necesita Vector3)
         dir = transform.TransformDirection(dir);
-        transform.position += dir * speed * Time.deltaTime;
 
         //lock mouse
         if (Mouse.current.leftButton.isPressed)
@@ -42,4 +42,14 @@ public class PlayerMover : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
+
+    void FixedUpdate()
+    {
+        Vector3 targetVelocity = dir * speed;
+        targetVelocity.y = rb.linearVelocity.y;
+
+        rb.linearVelocity = targetVelocity;
+    }
+
+
 }
