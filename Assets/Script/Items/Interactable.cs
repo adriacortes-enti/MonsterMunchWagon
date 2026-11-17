@@ -3,9 +3,8 @@ using UnityEngine;
 public abstract class Interactable : MonoBehaviour
 {
     public bool pickUpObject = false;
-    bool isPickedUp = false;
-    PlayerInteractions plyrHand;
-    public string tootltip;
+    public GameObject plyrHand;
+    public string itemID;
 
     public void Interact(PlayerInteractions playerHand) 
     {
@@ -21,15 +20,13 @@ public abstract class Interactable : MonoBehaviour
             gameObject.GetComponent<Rigidbody>().useGravity = false;
             gameObject.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-            isPickedUp = true;
-            plyrHand = playerHand;            
+            plyrHand = playerHand.gameObject;            
         }
     }
 
     public void Drop(PlayerInteractions playerHand, float throwStrength)
     {
         playerHand.heldObj = null;
-        isPickedUp = false;
         plyrHand = null;
         gameObject.transform.parent = null;
         gameObject.GetComponent<Rigidbody>().detectCollisions = true;
@@ -39,7 +36,7 @@ public abstract class Interactable : MonoBehaviour
 
     void Update()
     {
-        if (pickUpObject && isPickedUp)
+        if (pickUpObject && plyrHand)
         {
             gameObject.transform.position = plyrHand.gameObject.transform.position;
             gameObject.transform.rotation = plyrHand.gameObject.transform.rotation;
