@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Interactable : MonoBehaviour
+public abstract class Interactable : MonoBehaviour
 {
     public bool pickUpObject = false;
     bool isPickedUp = false;
@@ -9,7 +9,7 @@ public class Interactable : MonoBehaviour
 
     public void Interact(PlayerInteractions playerHand) 
     {
-        print("Interacting");
+        ExecuteInteraction(playerHand);
 
         if (pickUpObject && !playerHand.heldObj)
         {
@@ -45,4 +45,6 @@ public class Interactable : MonoBehaviour
             gameObject.transform.rotation = plyrHand.gameObject.transform.rotation;
         }
     }
+
+    protected abstract void ExecuteInteraction(PlayerInteractions playerHand);
 }
