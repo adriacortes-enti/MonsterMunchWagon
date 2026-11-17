@@ -4,6 +4,8 @@ public class PlayerInteractions : MonoBehaviour
 {
     RaycastHit hit;
     InputSystem_Actions input;
+    public GameObject heldObj;
+    public float throwStrength = 5f;
 
     void Start()
     {
@@ -22,12 +24,17 @@ public class PlayerInteractions : MonoBehaviour
             {
                 //here: make pointer in HUD grow like in hn
 
-                if (input.Player.Interact.WasPressedThisFrame())
+                if (input.Player.Attack.WasPressedThisFrame())
                 {
-                    hit.transform.gameObject.GetComponent<Interactable>().Interact(gameObject);
+                    hit.transform.gameObject.GetComponent<Interactable>().Interact(this);
                 }
             }
+        }
 
+        if (input.Player.Throw.WasPressedThisFrame() && heldObj)
+        { 
+            //drop items
+            heldObj.GetComponent<Interactable>().Drop(this, throwStrength);
         }
     }
 }
