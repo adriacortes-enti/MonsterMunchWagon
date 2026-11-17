@@ -16,6 +16,8 @@ public class Interactable : MonoBehaviour
             gameObject.transform.parent = playerHand.gameObject.transform;
             gameObject.GetComponent<Rigidbody>().detectCollisions = false;
             gameObject.GetComponent<Rigidbody>().useGravity = false;
+            gameObject.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
+            gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             gameObject.transform.position = playerHand.gameObject.transform.position;
             gameObject.transform.rotation = playerHand.gameObject.transform.rotation;
             

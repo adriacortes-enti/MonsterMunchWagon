@@ -35,5 +35,11 @@ public class PlayerMover : MonoBehaviour
         //wasd alternativa (optimizada, dir necesita Vector3)
         dir = transform.TransformDirection(dir);
         transform.position += dir * speed * Time.deltaTime;
+
+        //lock mouse
+        if (Mouse.current.leftButton.isPressed)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 }
