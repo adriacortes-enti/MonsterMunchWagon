@@ -5,7 +5,7 @@ public abstract class Interactable : MonoBehaviour
     public bool pickUpObject = false;
     bool isPickedUp = false;
     PlayerInteractions plyrHand;
-    public string itemID;
+    public string tootltip;
 
     public void Interact(PlayerInteractions playerHand) 
     {

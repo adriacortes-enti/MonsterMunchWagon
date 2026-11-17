@@ -218,7 +218,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Meat
+  m_text: Title
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 8034283898156965398}
   - component: {fileID: 4172762959727578131}
   m_Layer: 0
-  m_Name: MeatBox
+  m_Name: IngredientBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -342,7 +342,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IngredientBox
   pickUpObject: 0
   itemID: 
-  item: {fileID: 3065337652900493637, guid: 99810118a39b49f4d86bc4000fda87a4, type: 3}
+  item: {fileID: 0}
+  boxTitle: 
 --- !u!54 &4172762959727578131
 Rigidbody:
   m_ObjectHideFlags: 0
