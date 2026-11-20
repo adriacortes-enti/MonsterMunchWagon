@@ -251,12 +251,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Station
   pickUpObject: 0
   plyrHand: {fileID: 0}
-  itemID: 
+  itemID: parrilla
   foodPos1: {fileID: 998672147053391805}
   foodPos2: {fileID: 5583786047525779272}
   food1: {fileID: 0}
   food2: {fileID: 0}
-  allowedRecipes:
-  - ingredientID: meat
-    resultID: cooked_meat
-    cookTime: 3

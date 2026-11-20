@@ -341,7 +341,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IngredientBox
   pickUpObject: 0
-  itemID: 
+  plyrHand: {fileID: 0}
+  itemID: box
   item: {fileID: 0}
   boxTitle: 
 --- !u!54 &4172762959727578131

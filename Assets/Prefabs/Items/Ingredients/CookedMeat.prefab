@@ -190,6 +190,7 @@ MonoBehaviour:
   itemID: cooked_meat
   parentStation: {fileID: 0}
   stationSlot: 0
-  cookTime: 0
   isCooking: 0
-  result: {fileID: 0}
+  cookTime: 3
+  result: {fileID: 3065337652900493637, guid: b1005131df881d145a19c21ccffb624e, type: 3}
+  desiredStationID: parrilla

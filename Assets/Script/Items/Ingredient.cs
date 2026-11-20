@@ -4,15 +4,17 @@ public class Ingredient : Interactable
 {
     public Station parentStation;
     public int stationSlot;
-    public float cookTime;
     public bool isCooking = false;
+
+    public float cookTime;
     public GameObject result;
+    public string desiredStationID;
 
     protected override void Update()
     {
         base.Update(); //run parent update
 
-        if (isCooking)
+        if (isCooking && result)
         {
             if (cookTime > 0)
             {
