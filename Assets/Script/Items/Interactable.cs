@@ -34,7 +34,7 @@ public abstract class Interactable : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * throwStrength, ForceMode.Impulse);
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (pickUpObject && plyrHand)
         {

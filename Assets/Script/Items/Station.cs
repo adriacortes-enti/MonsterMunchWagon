@@ -14,7 +14,6 @@ public class Station : Interactable
     public struct Recipe
     {
         public string ingredientID;
-        public string resultID;
         public float cookTime;
     }
 
@@ -38,6 +37,9 @@ public class Station : Interactable
                         food1.GetComponent<Rigidbody>().detectCollisions = true;
                         food1.GetComponent<Ingredient>().parentStation = this;
                         food1.GetComponent<Ingredient>().stationSlot = 1;
+
+                        food1.GetComponent<Ingredient>().cookTime = allowedRecipes[i].cookTime;
+                        food1.GetComponent<Ingredient>().isCooking = true;
                     }
                     else if (!food2)
                     {
@@ -48,6 +50,9 @@ public class Station : Interactable
                         food2.GetComponent<Rigidbody>().detectCollisions = true;
                         food2.GetComponent<Ingredient>().parentStation = this;
                         food2.GetComponent<Ingredient>().stationSlot = 2;
+
+                        food2.GetComponent<Ingredient>().cookTime = allowedRecipes[i].cookTime;
+                        food2.GetComponent<Ingredient>().isCooking = true;
                     }
                 }
                 else
@@ -55,6 +60,35 @@ public class Station : Interactable
                     Debug.Log("no se puede cocinar esto aqui");
                 }
             }
+        }
+    }
+
+    public void CookIngredient(int slot)
+    {
+        GameObject result;
+        if (slot == 1)
+        {
+            result = food1.GetComponent<Ingredient>().result;
+            Destroy(food1);
+
+            food1 = Instantiate(result);
+
+            food1.GetComponent<Ingredient>().plyrHand = foodPos1;
+            food1.GetComponent<Rigidbody>().detectCollisions = true;
+            food1.GetComponent<Ingredient>().parentStation = this;
+            food1.GetComponent<Ingredient>().stationSlot = 1;
+        }
+        else if (slot == 2)
+        {
+            result = food2.GetComponent<Ingredient>().result;
+            Destroy(food2);
+
+            food2 = Instantiate(result);
+
+            food2.GetComponent<Ingredient>().plyrHand = foodPos2;
+            food2.GetComponent<Rigidbody>().detectCollisions = true;
+            food2.GetComponent<Ingredient>().parentStation = this;
+            food2.GetComponent<Ingredient>().stationSlot = 2;
         }
     }
 

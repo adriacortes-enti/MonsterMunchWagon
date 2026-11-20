@@ -4,6 +4,27 @@ public class Ingredient : Interactable
 {
     public Station parentStation;
     public int stationSlot;
+    public float cookTime;
+    public bool isCooking = false;
+    public GameObject result;
+
+    protected override void Update()
+    {
+        base.Update(); //run parent update
+
+        if (isCooking)
+        {
+            if (cookTime > 0)
+            {
+                cookTime -= Time.deltaTime;
+            }
+            else
+            {
+                isCooking = false;
+                parentStation.CookIngredient(stationSlot);
+            }
+        }
+    }
     protected override void ExecuteInteraction(PlayerInteractions playerHand)
     {
         if (parentStation)
@@ -13,6 +34,8 @@ public class Ingredient : Interactable
 
             parentStation = null;
             stationSlot = 0;
+
+            isCooking = false;
         }
     }
 }
