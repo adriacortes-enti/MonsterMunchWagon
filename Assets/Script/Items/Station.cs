@@ -14,37 +14,40 @@ public class Station : Interactable
     {
         if (playerHand.heldObj)
         {
-            if (playerHand.heldObj.GetComponent<Ingredient>().desiredStationID == itemID)
+            for (int i = 0; i < playerHand.heldObj.GetComponent<Ingredient>().desiredStationsID.Count; i++)
             {
-                Debug.Log("Working");
-                if (!food1)
+                if (playerHand.heldObj.GetComponent<Ingredient>().desiredStationsID[i] == itemID)
                 {
-                    food1 = playerHand.heldObj;
-                    playerHand.heldObj = null;
+                    Debug.Log("Working");
+                    if (!food1)
+                    {
+                        food1 = playerHand.heldObj;
+                        playerHand.heldObj = null;
 
-                    food1.GetComponent<Ingredient>().plyrHand = foodPos1;
-                    food1.GetComponent<Rigidbody>().detectCollisions = true;
-                    food1.GetComponent<Ingredient>().parentStation = this;
-                    food1.GetComponent<Ingredient>().stationSlot = 1;
+                        food1.GetComponent<Ingredient>().plyrHand = foodPos1;
+                        food1.GetComponent<Rigidbody>().detectCollisions = true;
+                        food1.GetComponent<Ingredient>().parentStation = this;
+                        food1.GetComponent<Ingredient>().stationSlot = 1;
 
-                    food1.GetComponent<Ingredient>().isCooking = true;
+                        food1.GetComponent<Ingredient>().isCooking = true;
+                    }
+                    else if (!food2)
+                    {
+                        food2 = playerHand.heldObj;
+                        playerHand.heldObj = null;
+
+                        food2.GetComponent<Ingredient>().plyrHand = foodPos2;
+                        food2.GetComponent<Rigidbody>().detectCollisions = true;
+                        food2.GetComponent<Ingredient>().parentStation = this;
+                        food2.GetComponent<Ingredient>().stationSlot = 2;
+
+                        food2.GetComponent<Ingredient>().isCooking = true;
+                    }
                 }
-                else if (!food2)
+                else
                 {
-                    food2 = playerHand.heldObj;
-                    playerHand.heldObj = null;
-
-                    food2.GetComponent<Ingredient>().plyrHand = foodPos2;
-                    food2.GetComponent<Rigidbody>().detectCollisions = true;
-                    food2.GetComponent<Ingredient>().parentStation = this;
-                    food2.GetComponent<Ingredient>().stationSlot = 2;
-
-                    food2.GetComponent<Ingredient>().isCooking = true;
+                    Debug.Log("no se puede cocinar esto aqui");
                 }
-            }
-            else
-            {
-                Debug.Log("no se puede cocinar esto aqui");
             }
         }
     }

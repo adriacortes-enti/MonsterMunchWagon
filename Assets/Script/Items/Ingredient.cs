@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Ingredient : Interactable
@@ -7,9 +9,12 @@ public class Ingredient : Interactable
     public bool isCooking = false;
 
     public float cookTime;
-    public GameObject result;
-    public string desiredStationID;
+    public GameObject result; //para cocinas
+    public GameObject mergeResult; //para fusionar (pan + salchicha)
 
+    [Serialize]
+    public List<string> desiredStationsID;
+        
     protected override void Update()
     {
         base.Update(); //run parent update
@@ -34,21 +39,24 @@ public class Ingredient : Interactable
 
         //usar desiredStationID con una ID de objeto si los ingredientes sedeben fusionar
         //por ejemplo pan + salchicha
-        if (playerHand.heldObj.GetComponent<Ingredient>().desiredStationID == itemID)
+        for (int i = 0; i < desiredStationsID.Count; i++)
         {
-            GameObject resultTmp;
-            resultTmp = playerHand.heldObj.GetComponent<Ingredient>().result;
-            resultTmp = Instantiate(resultTmp);
-            Destroy(playerHand.heldObj);
+            if (playerHand.heldObj.GetComponent<Ingredient>().desiredStationsID[i] == itemID)
+            {
+                GameObject resultTmp;
+                resultTmp = playerHand.heldObj.GetComponent<Ingredient>().mergeResult;
+                resultTmp = Instantiate(resultTmp);
+                Destroy(playerHand.heldObj);
 
-            resultTmp.GetComponent<Interactable>().plyrHand = playerHand.gameObject;
-            playerHand.heldObj = resultTmp;
+                resultTmp.GetComponent<Interactable>().plyrHand = playerHand.gameObject;
+                playerHand.heldObj = resultTmp;
 
-            resultTmp.transform.parent = playerHand.gameObject.transform;
-            resultTmp.GetComponent<Rigidbody>().detectCollisions = false;
-            resultTmp.GetComponent<Rigidbody>().useGravity = false;
+                resultTmp.transform.parent = playerHand.gameObject.transform;
+                resultTmp.GetComponent<Rigidbody>().detectCollisions = false;
+                resultTmp.GetComponent<Rigidbody>().useGravity = false;
 
-            Destroy(gameObject);
+                Destroy(gameObject);
+            }
         }
     }
 

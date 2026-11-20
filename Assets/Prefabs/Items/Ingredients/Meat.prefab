@@ -193,4 +193,6 @@ MonoBehaviour:
   isCooking: 0
   cookTime: 3
   result: {fileID: 3065337652900493637, guid: 287d9f2e2e04fc94d9e97e256f7cb198, type: 3}
-  desiredStationID: parrilla
+  mergeResult: {fileID: 0}
+  desiredStationsID:
+  - parrilla
