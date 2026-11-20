@@ -6,7 +6,7 @@ public abstract class Interactable : MonoBehaviour
     public GameObject plyrHand;
     public string itemID;
 
-    public void Interact(PlayerInteractions playerHand) 
+    public virtual void Interact(PlayerInteractions playerHand) 
     {
         ExecuteInteraction(playerHand);
 

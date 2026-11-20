@@ -27,6 +27,31 @@ public class Ingredient : Interactable
             }
         }
     }
+
+    public override void Interact(PlayerInteractions playerHand)
+    {
+        base.Interact(playerHand);
+
+        //usar desiredStationID con una ID de objeto si los ingredientes sedeben fusionar
+        //por ejemplo pan + salchicha
+        if (playerHand.heldObj.GetComponent<Ingredient>().desiredStationID == itemID)
+        {
+            GameObject resultTmp;
+            resultTmp = playerHand.heldObj.GetComponent<Ingredient>().result;
+            resultTmp = Instantiate(resultTmp);
+            Destroy(playerHand.heldObj);
+
+            resultTmp.GetComponent<Interactable>().plyrHand = playerHand.gameObject;
+            playerHand.heldObj = resultTmp;
+
+            resultTmp.transform.parent = playerHand.gameObject.transform;
+            resultTmp.GetComponent<Rigidbody>().detectCollisions = false;
+            resultTmp.GetComponent<Rigidbody>().useGravity = false;
+
+            Destroy(gameObject);
+        }
+    }
+
     protected override void ExecuteInteraction(PlayerInteractions playerHand)
     {
         if (parentStation)
