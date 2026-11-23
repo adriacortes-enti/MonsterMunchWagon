@@ -1,15 +1,13 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class IngredientBox : Interactable
 {
     public GameObject item;
-    public string boxTitle;
 
     void Awake()
     {
-        gameObject.GetComponentInChildren<TextMeshPro>().text = boxTitle;
+        gameObject.GetComponentInChildren<TextMeshPro>().text = item.GetComponent<Ingredient>().itemTitle;
     }
 
     protected override void ExecuteInteraction(PlayerInteractions playerHand)

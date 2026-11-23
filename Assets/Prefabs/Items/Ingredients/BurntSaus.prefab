@@ -194,5 +194,6 @@ MonoBehaviour:
   cookTime: 3
   result: {fileID: 0}
   mergeResult: {fileID: 0}
+  itemTitle: Burnt Sausage
   desiredStationsID:
   - parrilla
