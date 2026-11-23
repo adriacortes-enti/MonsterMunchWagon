@@ -192,7 +192,7 @@ MonoBehaviour:
   stationSlot: 0
   isCooking: 0
   cookTime: 0
-  result: {fileID: 3065337652900493637, guid: e7cba92aac4adaa42861f9353c7cbe22, type: 3}
+  result: {fileID: 0}
   mergeResult: {fileID: 3065337652900493637, guid: e7cba92aac4adaa42861f9353c7cbe22, type: 3}
   desiredStationsID:
   - cooked_sausage

@@ -39,7 +39,7 @@ public class Ingredient : Interactable
 
         //usar desiredStationID con una ID de objeto si los ingredientes sedeben fusionar
         //por ejemplo pan + salchicha
-        for (int i = 0; i < desiredStationsID.Count; i++)
+        for (int i = 0; i < playerHand.heldObj.GetComponent<Ingredient>().desiredStationsID.Count; i++)
         {
             if (playerHand.heldObj.GetComponent<Ingredient>().desiredStationsID[i] == itemID)
             {
@@ -56,6 +56,11 @@ public class Ingredient : Interactable
                 resultTmp.GetComponent<Rigidbody>().useGravity = false;
 
                 Destroy(gameObject);
+                return;
+            }
+            else
+            {
+                Debug.Log("not interacting w " + playerHand.heldObj.GetComponent<Ingredient>().desiredStationsID[i]);
             }
         }
     }

@@ -43,6 +43,7 @@ public class Station : Interactable
 
                         food2.GetComponent<Ingredient>().isCooking = true;
                     }
+                    return;
                 }
                 else
                 {
