@@ -381,8 +381,13 @@ MonoBehaviour:
   txtBox1: {fileID: 5860806658553794933}
   txtBox2: {fileID: 402981523505855321}
   txtBox3: {fileID: 213097006505355729}
-  ordersID: []
+  ordersPool:
+  - {fileID: 3177029448393581109, guid: 287d9f2e2e04fc94d9e97e256f7cb198, type: 3}
+  - {fileID: 3177029448393581109, guid: ebd8da754e854a846a9245756136a77e, type: 3}
+  - {fileID: 3177029448393581109, guid: e7cba92aac4adaa42861f9353c7cbe22, type: 3}
+  orders: []
   ordersStatus: 01
+  completed: {fileID: 3177029448393581109, guid: f4b4f1e1b9062a9478f487400f8dcaa6, type: 3}
 --- !u!65 &6464461460019889620
 BoxCollider:
   m_ObjectHideFlags: 0

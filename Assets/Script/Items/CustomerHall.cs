@@ -10,8 +10,10 @@ public class CustomerHall : Interactable
     public TextMeshPro txtBox3;
 
     [Serialize]
-    public List<string> ordersID;
+    public List<Ingredient> ordersPool;
+    public List<Ingredient> orders;
     public List<bool> ordersStatus;
+    public Ingredient completed;
 
     private void Start()
     {
@@ -27,15 +29,17 @@ public class CustomerHall : Interactable
 
     protected override void ExecuteInteraction(PlayerInteractions playerHand)
     {
-        for (int i = 0; i < ordersID.Count; i++)
+        for (int i = 0; i < orders.Count; i++)
         {
-            if (playerHand.heldObj && playerHand.heldObj.GetComponent<Ingredient>().itemID == ordersID[i])
+            if (playerHand.heldObj && playerHand.heldObj.GetComponent<Ingredient>().itemID == orders[i].itemID)
             {
+                
                 
 
                 //TODO: give money
 
                 ordersStatus[i] = true;
+                orders[i] = completed;
                 UpdateCustomer();
                 Destroy(playerHand.heldObj);
                 return;
@@ -60,31 +64,31 @@ public class CustomerHall : Interactable
         //reset customer once completed
         if (isDone)
         {
-            ordersID = new List<string>();
+            orders = new List<Ingredient>();
             ordersStatus = new List<bool>();
 
-            //TEST
-            ordersID.Add("cooked_meat");
-            ordersID.Add("hot_dog");
-            ordersID.Add("bun");
+            for (int i = 0; i < 3; i++) //TODO: cambiar el 3 por la posibilidad de menos pedidios
+            {
+                orders.Add(ordersPool[Random.Range(0, orders.Count)]);
+            }
 
-            for (int i = 0; i < ordersID.Count; i++)
+            for (int i = 0; i < orders.Count; i++)
             {
                 switch (i)
                 {
                     case 0:
-                        txtBox1.text = ordersID[i];
+                        txtBox1.text = orders[i].itemTitle;
                         break;
                     case 1:
-                        txtBox2.text = ordersID[i];
+                        txtBox2.text = orders[i].itemTitle;
                         break;
                     case 2:
-                        txtBox3.text = ordersID[i];
+                        txtBox3.text = orders[i].itemTitle;
                         break;
                 }
             }
 
-            for (int i = 0; i < ordersID.Count; i++)
+            for (int i = 0; i < orders.Count; i++)
             {
                 ordersStatus.Add(false);
             }
