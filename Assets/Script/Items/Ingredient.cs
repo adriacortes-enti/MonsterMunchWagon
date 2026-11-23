@@ -12,6 +12,8 @@ public class Ingredient : Interactable
     public GameObject result; //para cocinas
     public GameObject mergeResult; //para fusionar (pan + salchicha)
 
+    public string itemTitle;
+
     [Serialize]
     public List<string> desiredStationsID;
         

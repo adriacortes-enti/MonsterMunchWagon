@@ -194,5 +194,6 @@ MonoBehaviour:
   cookTime: 3
   result: {fileID: 3065337652900493637, guid: b1005131df881d145a19c21ccffb624e, type: 3}
   mergeResult: {fileID: 0}
+  itemTitle: Cooked Meat
   desiredStationsID:
   - parrilla
